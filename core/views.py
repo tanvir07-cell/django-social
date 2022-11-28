@@ -4,7 +4,8 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Profile, Post,LikePost
-
+import re
+email_condition = "@diu.edu.bd"
 
 
 
@@ -108,11 +109,21 @@ def profile(request,pk):
 def signup(request):
     # after posting the signup form to the databse then we get all information from the signup form:
     
+    
     if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
+        if re.search(email_condition,email):
+            
+          messages.info(request, "Thank you")
+        else:
+         
+           messages.info(request, "Please get your diu email address before registration ❌")
+           return redirect('signup')
+        
+       
 
        
 
