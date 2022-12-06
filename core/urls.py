@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("follow",views.follow,name = "follow"),
     path("settings", views.settings, name="settings"),
     path("upload", views.upload, name="upload"),
     path('profile/<str:pk>', views.profile, name='profile'),
